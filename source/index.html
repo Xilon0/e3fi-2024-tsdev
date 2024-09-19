@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #clickme{
+            padding: 10px;
+        }
+        #deleteMe{
+            padding: 10px;
+        }
+    </style>
+    <script>
+        let mylist = [];
+        let myobject = {};
+
+        function doSomething(){
+            console.log("Test")
+            let innerHTML = "<ul>";
+                mylist.forEach((item) => {
+                    innerHTML += `<li>${item}<span class="deleteButton" onclick="deleteEntry(${item.id})">X</span></li>`;
+                });
+                innerHTML += "</ul>";
+            document.getElementById("HelloWorld").innerHTML = innerHTML;
+            addToDo();
+        }
+
+        function addToDo(){
+            let value = document.getElementById("eingabefeld").value;
+            let object = {
+                id : mylist.length,
+                value : value
+            }
+            mylist.push(value);
+        }
+
+        function deleteEntry() {
+            console.log("test");
+        }
+    </script>
+</head>
+<body>
+    <div id="HelloWorld">
+        <p>Hallo Welt</p>
+    </div>
+    <div id="itemList">
+
+    </div>
+    <button id="clickme" onclick="doSomething()"> Click mich</button>
+    <button id="deleteMe" onlick="deleteEntry()"> delete </button>
+    <input id="eingabefeld" value="default"></input>
+</body>
+</html>
